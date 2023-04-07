@@ -1,22 +1,22 @@
-// Espera que a página esteja totalmente carregada antes de executar o código
+// Espera o carregamento
 window.addEventListener('load', () => {
-    // Seleciona o formulário
+    // escolhe o form
     const form = document.querySelector('#imc-form');
   
-    // Verifica se o formulário existe antes de adicionar o ouvinte de eventos
+    // Verifica o form
     if (form) {
-      // Adiciona um evento de submit ao formulário
+      // eventos
       form.addEventListener('submit', (event) => {
-        event.preventDefault(); // Previne o comportamento padrão do formulário
+        event.preventDefault();
   
-        // Seleciona a altura e o peso inseridos pelo usuário
+        // Atribui os valores dos inputs às variáveis
         const altura = parseFloat(document.querySelector('#altura').value);
         const peso = parseFloat(document.querySelector('#peso').value);
   
-        // Calcula o IMC
+        // calcula os valores
         const imc = peso / (altura * altura);
   
-        // Exibe o resultado na tela
+        // Condições
         const resultadoDiv = document.querySelector('#resultado');
       let diagnostico = '';
       if (imc < 18.5) {
@@ -32,6 +32,7 @@ window.addEventListener('load', () => {
       } else {
         diagnostico = 'Obesidade classe III';
       }
+      // exibe o resultado com base na condição
       resultadoDiv.innerHTML = `<p>Seu IMC é: ${imc.toFixed(2)}</p><p>Diagnóstico: ${diagnostico}</p>`;
     });
   }

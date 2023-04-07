@@ -8,12 +8,17 @@
 <body>
 	<h1>Calculadora de IMC</h1>
 	<form id="imc-form">
+		<!-- Recebe a altura -->
 		<label for="altura">Altura (metros):</label>
 		<input type="number" step="0.01" id="altura" name="altura" required><br><br>
+		
+		<!-- Recebe o peso -->
 		<label for="peso">Peso (quilos):</label>
 		<input type="number" step="0.01" id="peso" name="peso" required><br><br>
 		<input type="submit" value="Calcular">
 	</form>
+	
+	<!-- Inner para dizer o resultado e apresentar o diagnóstico -->
 	<div id="resultado"></div>
 </body>
 </html>
