@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.reislucasf.twa",
+        "sha256_cert_fingerprints": ["FA:1F:0E:98:9F:59:C8:75:CB:70:DB:D3:7B:84:3B:5B:AC:AB:87:62:C4:D7:AB:36:E5:69:05:6F:A6:7A:24:D8"]
+      }
+    }]
