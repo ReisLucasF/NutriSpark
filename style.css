@@ -15,12 +15,20 @@ body {
 }
 .containerAjax {
   align-items: center;
-  padding: 5px;
+  margin: 0;
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
   background-color: #e6e6e6;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+}
+
+#result{
+  display: flex;
+  justify-content: center;
 }
 
 h1 {
