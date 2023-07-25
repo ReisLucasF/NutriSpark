@@ -2,106 +2,106 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("btnIMC").addEventListener("click", function () {
         hideButtons();
         hideimagem();
-        loadCalculationSession("src/imc.html");
+        loadSessaoDeCalculo("src/imc.html");
     });
 
     document.getElementById("btnCalorias").addEventListener("click", function () {
         hideButtons();
         hideimagem();
-        loadCalculationSession("src/calorias.html");
+        loadSessaoDeCalculo("src/calorias.html");
     });
 
     document.getElementById("btnGEB").addEventListener("click", function () {
         hideButtons();
         hideimagem();
-        loadCalculationSession("src/geb.html");
+        loadSessaoDeCalculo("src/geb.html");
     });
 
     document.getElementById("btnPercentualGordura").addEventListener("click", function () {
         hideButtons();
         hideimagem();
-        loadCalculationSession("src/percentual_gordura.html");
+        loadSessaoDeCalculo("src/percentual_gordura.html");
     });
 
     document.getElementById("btnAgua").addEventListener("click", function () {
         hideButtons();
         hideimagem();
-        loadCalculationSession("src/necessidades_agua.html");
+        loadSessaoDeCalculo("src/necessidades_agua.html");
     });
 
     document.getElementById("btnBack").addEventListener("click", function () {
         showButtons();
         showimagem();
-        hideCalculationSession();
+        hideSessaoDeCalculo();
     });
 
     // faz o carregamento AJAX das sessões
-    function loadCalculationSession(url) {
+    function loadSessaoDeCalculo(url) {
         fetch(url)
             .then(response => response.text())
             .then(data => {
                 document.getElementById("result").innerHTML = data;
                 document.getElementById("btnBack").style.display = "block";
 
-                document.getElementById("btnCalculate").addEventListener("click", function () {
+                document.getElementById("btncalcular").addEventListener("click", function () {
                     if (url.includes("src/imc.html")) {
         
                       //IMC
-                      const weight = parseFloat(document.getElementById("weight").value);
-                        const height = parseFloat(document.getElementById("height").value);
-                        const bmi = calculateBMI(weight, height);
-                        const bmiResultElement = document.getElementById("bmiResult");
+                      const peso = parseFloat(document.getElementById("peso").value);
+                        const altura = parseFloat(document.getElementById("altura").value);
+                        const imc = calcularimc(peso, altura);
+                        const imcResultElement = document.getElementById("imcResult");
 
-                        document.getElementById("bmiResult").textContent = `Seu IMC é: ${bmi.toFixed(2)}`;
+                        document.getElementById("imcResult").textContent = `Seu IMC é: ${imc.toFixed(2)}`;
 
-                        if (bmi < 18.5) {
-                        bmiResultElement.textContent += " - Abaixo do peso";
-                        } else if (bmi >= 18.5 && bmi < 24.9) {
-                        bmiResultElement.textContent += " - Peso normal";
-                        } else if (bmi >= 25 && bmi < 29.9) {
-                        bmiResultElement.textContent += " - Sobrepeso";
-                        } else if (bmi >= 30 && bmi < 34.9) {
-                        bmiResultElement.textContent += " - Obesidade grau I";
-                        } else if (bmi >= 35 && bmi < 39.9) {
-                        bmiResultElement.textContent += " - Obesidade grau II";
-                        } else if (bmi >= 40) {
-                        bmiResultElement.textContent += " - Obesidade grau III";
+                        if (imc < 18.5) {
+                        imcResultElement.textContent += " - Abaixo do peso";
+                        } else if (imc >= 18.5 && imc < 24.9) {
+                        imcResultElement.textContent += " - Peso normal";
+                        } else if (imc >= 25 && imc < 29.9) {
+                        imcResultElement.textContent += " - Sobrepeso";
+                        } else if (imc >= 30 && imc < 34.9) {
+                        imcResultElement.textContent += " - Obesidade grau I";
+                        } else if (imc >= 35 && imc < 39.9) {
+                        imcResultElement.textContent += " - Obesidade grau II";
+                        } else if (imc >= 40) {
+                        imcResultElement.textContent += " - Obesidade grau III";
                         }
                     } else if (url.includes("src/calorias.html")) {
         
                       //necessidades calóricas
-                      const weight = parseFloat(document.getElementById("weight").value);
-                      const height = parseFloat(document.getElementById("height").value);
-                      const age = parseInt(document.getElementById("age").value);
-                      const gender = document.querySelector('input[name="gender"]:checked').value;
-                      const activityLevel = parseFloat(document.getElementById("activityLevel").value);
-                      const caloricNeeds = calculateCaloricNeeds(weight, height, age, gender, activityLevel);
+                      const peso = parseFloat(document.getElementById("peso").value);
+                      const altura = parseFloat(document.getElementById("altura").value);
+                      const idade = parseInt(document.getElementById("idade").value);
+                      const genero = document.querySelector('input[name="genero"]:checked').value;
+                      const nivelDeAtividade = parseFloat(document.getElementById("nivelDeAtividade").value);
+                      const caloricNeeds = calcularCaloricNeeds(peso, altura, idade, genero, nivelDeAtividade);
                       document.getElementById("caloricNeedsResult").textContent = `Suas necessidades calóricas diárias são: ${caloricNeeds.toFixed(2)} calorias`;
                     } else if (url.includes("src/geb.html")) {
         
                       //GEB
-                      const weight = parseFloat(document.getElementById("weight").value);
-                      const height = parseFloat(document.getElementById("height").value);
-                      const age = parseInt(document.getElementById("age").value);
-                      const gender = document.querySelector('input[name="gender"]:checked').value;
-                      const geb = calculateGEB(weight, height, age, gender);
+                      const peso = parseFloat(document.getElementById("peso").value);
+                      const altura = parseFloat(document.getElementById("altura").value);
+                      const idade = parseInt(document.getElementById("idade").value);
+                      const genero = document.querySelector('input[name="genero"]:checked').value;
+                      const geb = calcularGEB(peso, altura, idade, genero);
                       document.getElementById("gebResult").textContent = `Seu Gasto Energético Basal é: ${geb.toFixed(2)} calorias`;
                     } else if (url.includes("src/percentual_gordura.html")) {
         
                       //percentual de gordura corporal
-                      const weight = parseFloat(document.getElementById("weight").value);
-                      const waistCircumference = parseFloat(document.getElementById("waistCircumference").value);
-                      const hipCircumference = parseFloat(document.getElementById("hipCircumference").value);
-                      const neckCircumference = parseFloat(document.getElementById("neckCircumference").value);
-                      const gender = document.querySelector('input[name="gender"]:checked').value;
-                      const bodyFatPercentage = calculateBodyFatPercentage(weight, waistCircumference, hipCircumference, neckCircumference, gender);
-                      document.getElementById("bodyFatResult").textContent = `Seu percentual de gordura corporal é: ${bodyFatPercentage.toFixed(2)}%`;
+                      const peso = parseFloat(document.getElementById("peso").value);
+                        const circuferenciaCintura = parseFloat(document.getElementById("circuferenciaCintura").value);
+                        const circuferenciaQuadril = parseFloat(document.getElementById("circuferenciaQuaril").value);
+                        const circuferenciaPescoco = parseFloat(document.getElementById("circuferenciaPescoco").value);
+                        const genero = document.querySelector('input[name="genero"]:checked').value;
+                        const GEBpercent = calcularGEBpercent(peso, circuferenciaCintura, circuferenciaQuadril, circuferenciaPescoco, genero);
+                        document.getElementById("bodyFatResult").textContent = `Seu percentual de gordura corpora: ${GEBpercent.toFixed(2)}%`;
                     } else if (url.includes("src/necessidades_agua.html")) {
         
                       //necessidades de água
-                      const weight = parseFloat(document.getElementById("weight").value);
-                      const waterNeeds = calculateWaterNeeds(weight);
-                      document.getElementById("waterNeedsResult").textContent = `Suas necessidades diárias de água são: ${waterNeeds.toFixed(2)} litros`;
+                      const peso = parseFloat(document.getElementById("peso").value);
+                      const aguaNecessidade = calcularaguaNecessidade(peso);
+                      document.getElementById("aguaNecessidadeResult").textContent = `Suas necessidades diárias de água são: ${aguaNecessidade.toFixed(2)}L`;
                     }
                 });
             })
@@ -132,67 +132,67 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Esconder a sessão de cálculo
-    function hideCalculationSession() {
+    function hideSessaoDeCalculo() {
         document.getElementById("result").innerHTML = "";
         document.getElementById("btnBack").style.display = "none";
     }
     //calcular o IMC
-    function calculateBMI(weight, height) {
-        if (isNaN(weight) || isNaN(height) || height === 0) {
+    function calcularimc(peso, altura) {
+        if (isNaN(peso) || isNaN(altura) || altura === 0) {
             return 0;
         }
 
-        const bmi = weight / Math.pow(height, 2);
-        return bmi;
+        const imc = peso / Math.pow(altura, 2);
+        return imc;
     }
 
     //calcular as necessidades calóricas
-    function calculateCaloricNeeds(weight, height, age, gender, activityLevel) {
+    function calcularCaloricNeeds(peso, altura, idade, genero, nivelDeAtividade) {
         let bmr;
-        if (gender === "male") {
-            bmr = 88.36 + (13.4 * weight) + (4.8 * height * 100) - (5.7 * age);
-        } else if (gender === "female") {
-            bmr = 447.6 + (9.2 * weight) + (3.1 * height * 100) - (4.3 * age);
+        if (genero === "masculino") {
+            bmr = 88.36 + (13.4 * peso) + (4.8 * altura * 100) - (5.7 * idade);
+        } else if (genero === "feminino") {
+            bmr = 447.6 + (9.2 * peso) + (3.1 * altura * 100) - (4.3 * idade);
         }
 
-        const caloricNeeds = bmr * activityLevel;
+        const caloricNeeds = bmr * nivelDeAtividade;
         return caloricNeeds;
     }
 
     //calcular o Gasto Energético Basal (GEB)
-    function calculateGEB(weight, height, age, gender) {
+    function calcularGEB(peso, altura, idade, genero) {
         let geb;
-        if (gender === "male") {
-            geb = 88.36 + (13.4 * weight) + (4.8 * height * 100) - (5.7 * age);
-        } else if (gender === "female") {
-            geb = 447.6 + (9.2 * weight) + (3.1 * height * 100) - (4.3 * age);
+        if (genero === "masculino") {
+            geb = 88.36 + (13.4 * peso) + (4.8 * altura * 100) - (5.7 * idade);
+        } else if (genero === "feminino") {
+            geb = 447.6 + (9.2 * peso) + (3.1 * altura * 100) - (4.3 * idade);
         }
         return geb;
     }
 
     //calcular o percentual de gordura corporal
-    function calculateBodyFatPercentage(weight, waistCircumference, hipCircumference, neckCircumference, gender) {
-        if (isNaN(weight) || isNaN(waistCircumference) || isNaN(hipCircumference) || isNaN(neckCircumference)) {
+    function calcularGEBpercent(peso, circuferenciaCintura, circuferenciaQuadril, circuferenciaPescoco, genero) {
+        if (isNaN(peso) || isNaN(circuferenciaCintura) || isNaN(circuferenciaQuadril) || isNaN(circuferenciaPescoco)) {
             return 0;
         }
-
-        let bodyFatPercentage;
-        if (gender === "male") {
-            bodyFatPercentage = 86.010 * Math.log10(waistCircumference - neckCircumference) - 70.041 * Math.log10(weight) + 36.76;
-        } else if (gender === "female") {
-            bodyFatPercentage = 163.205 * Math.log10(waistCircumference + hipCircumference - neckCircumference) - 97.684 * Math.log10(weight) - 78.387;
+    
+        let GEBpercent;
+        if (genero === "masculino") {
+            GEBpercent = 86.010 * Math.log10(circuferenciaCintura - circuferenciaPescoco) - 70.041 * Math.log10(peso) + 36.76;
+        } else if (genero === "feminino") {
+            GEBpercent = 163.205 * Math.log10(circuferenciaCintura + circuferenciaQuadril - circuferenciaPescoco) - 97.684 * Math.log10(peso) - 78.387;
         }
-        return bodyFatPercentage;
+        return GEBpercent;
     }
 
     //calcular as necessidades de água
-    function calculateWaterNeeds(weight) {
-        if (isNaN(weight)) {
+    function calcularaguaNecessidade(peso) {
+        if (isNaN(peso)) {
             return 0;
         }
 
-        const waterNeeds = weight * 30;
-        return waterNeeds;
+        const aguaNecessidade = (peso * 30)/1000;
+        return aguaNecessidade;
     }
 });
 
