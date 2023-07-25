@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         const imc = calcularimc(peso, altura);
                         const imcResultElement = document.getElementById("imcResult");
 
-                        document.getElementById("imcResult").textContent = `Seu IMC é: ${imc.toFixed(2)}`;
+                        document.getElementById("imcResult").textContent = `IMC: ${imc.toFixed(2)}`;
 
                         if (imc < 18.5) {
                         imcResultElement.textContent += " - Abaixo do peso";
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       const genero = document.querySelector('input[name="genero"]:checked').value;
                       const nivelDeAtividade = parseFloat(document.getElementById("nivelDeAtividade").value);
                       const caloricNeeds = calcularCaloricNeeds(peso, altura, idade, genero, nivelDeAtividade);
-                      document.getElementById("caloricNeedsResult").textContent = `Suas necessidades calóricas diárias são: ${caloricNeeds.toFixed(2)} calorias`;
+                      document.getElementById("caloricNeedsResult").textContent = `Necessidade calórica diária: ${caloricNeeds.toFixed(2)} calorias`;
                     } else if (url.includes("src/geb.html")) {
         
                       //GEB
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       const idade = parseInt(document.getElementById("idade").value);
                       const genero = document.querySelector('input[name="genero"]:checked').value;
                       const geb = calcularGEB(peso, altura, idade, genero);
-                      document.getElementById("gebResult").textContent = `Seu Gasto Energético Basal é: ${geb.toFixed(2)} calorias`;
+                      document.getElementById("gebResult").textContent = `Gasto Energético Basal: ${geb.toFixed(2)} calorias`;
                     } else if (url.includes("src/percentual_gordura.html")) {
         
                       //percentual de gordura corporal
@@ -95,13 +95,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         const circuferenciaPescoco = parseFloat(document.getElementById("circuferenciaPescoco").value);
                         const genero = document.querySelector('input[name="genero"]:checked').value;
                         const GEBpercent = calcularGEBpercent(peso, circuferenciaCintura, circuferenciaQuadril, circuferenciaPescoco, genero);
-                        document.getElementById("bodyFatResult").textContent = `Seu percentual de gordura corpora: ${GEBpercent.toFixed(2)}%`;
+                        document.getElementById("bodyFatResult").textContent = `Percentual de gordura corporal: ${GEBpercent.toFixed(2)}%`;
                     } else if (url.includes("src/necessidades_agua.html")) {
         
                       //necessidades de água
                       const peso = parseFloat(document.getElementById("peso").value);
                       const aguaNecessidade = calcularaguaNecessidade(peso);
-                      document.getElementById("aguaNecessidadeResult").textContent = `Suas necessidades diárias de água são: ${aguaNecessidade.toFixed(2)}L`;
+                      document.getElementById("aguaNecessidadeResult").textContent = `Necessidades diárias de água: ${aguaNecessidade.toFixed(2)}L`;
                     }
                 });
             })
