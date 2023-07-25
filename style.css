@@ -1,0 +1,175 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 20px 20px;
+}
+.containerAjax {
+  align-items: center;
+  padding: 5px;
+  background-color: #e6e6e6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-size: 20px;
+  color: #333;
+}
+h2{
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+.buttons, show-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 10px;
+  margin-bottom: 20px;
+}
+
+#tabs {
+  display: none;
+  margin-top: 20px;
+}
+
+#btnBack {
+  display: none;
+  margin-top: 10px;
+}
+
+button{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #258efd;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #005fc5;
+}
+
+#result {
+  margin-top: 20px;
+}
+ 
+/* sessão de cálculo */
+.calculator-session {
+  margin-top: 20px;
+}
+
+.calculator-session h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.calculator-session label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.calculator-session input[type="number"],
+.calculator-session input[type="radio"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.calculator-session button {
+  margin-top: 10px;
+}
+
+.calculator-session #result {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.show-tabs .buttons {
+  display: none;
+}
+
+.show-tabs #tabs {
+  display: block;
+}
+
+.show-tabs #btnBack {
+  display: block;
+}
+
+input{
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  background-color: #ffffff;
+}
+
+select{
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  background-color: #ffffff;
+}
+
+
+
+label{
+  margin-bottom: 0.5rem;
+  margin-top: .5rem;
+  font-weight: bold;
+
+}
+
+#btnCalculate{
+  margin-top: 1rem;
+}
+
+#btnBack{
+  width: 40%;
+}
+
+.resultado{
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: center;
+} 
+
+.gen{
+  margin-bottom: .5rem;
+}
+
+.banner{
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.banner img{
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
