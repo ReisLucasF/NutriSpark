@@ -1,0 +1,27 @@
+{
+    "background_color": "#258efd",
+    "description": "NutriSpark: Uma poderosa ferramenta para profissionais de saúde e nutrição. Otimize suas avaliações e prescrições com cálculos precisos de IMC, necessidades calóricas, GEB, percentual de gordura e hidratação diária. Facilite o monitoramento e planejamento de dietas personalizadas para seus pacientes. Aumente sua eficiência e qualidade de atendimento com o NutriSpark, a escolha inteligente para profissionais comprometidos com a saúde e bem-estar de seus pacientes.",
+    "dir": "ltr",
+    "display": "standalone",
+    "name": "NutriSpark",
+    "orientation": "any",
+    "scope": "/",
+    "short_name": "NutriSpark",
+    "start_url": "/",
+    "theme_color": "#258efd",
+    "categories": [
+      "business",
+      "education",
+      "fitness"
+    ],
+    "screenshots": [],
+    "icons": [
+      {
+        "src": "src\\img\\NutriSpark.png",
+        "type": "image/png",
+        "sizes": "100x100"
+      }
+    ],
+    "shortcuts": [],
+    "lang": "pt"
+  }
