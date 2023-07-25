@@ -48,9 +48,25 @@ document.addEventListener("DOMContentLoaded", function () {
         
                       //IMC
                       const weight = parseFloat(document.getElementById("weight").value);
-                      const height = parseFloat(document.getElementById("height").value);
-                      const bmi = calculateBMI(weight, height);
-                      document.getElementById("bmiResult").textContent = `Seu IMC é: ${bmi.toFixed(2)}`;
+                        const height = parseFloat(document.getElementById("height").value);
+                        const bmi = calculateBMI(weight, height);
+                        const bmiResultElement = document.getElementById("bmiResult");
+
+                        document.getElementById("bmiResult").textContent = `Seu IMC é: ${bmi.toFixed(2)}`;
+
+                        if (bmi < 18.5) {
+                        bmiResultElement.textContent += " - Abaixo do peso";
+                        } else if (bmi >= 18.5 && bmi < 24.9) {
+                        bmiResultElement.textContent += " - Peso normal";
+                        } else if (bmi >= 25 && bmi < 29.9) {
+                        bmiResultElement.textContent += " - Sobrepeso";
+                        } else if (bmi >= 30 && bmi < 34.9) {
+                        bmiResultElement.textContent += " - Obesidade grau I";
+                        } else if (bmi >= 35 && bmi < 39.9) {
+                        bmiResultElement.textContent += " - Obesidade grau II";
+                        } else if (bmi >= 40) {
+                        bmiResultElement.textContent += " - Obesidade grau III";
+                        }
                     } else if (url.includes("src/calorias.html")) {
         
                       //necessidades calóricas
