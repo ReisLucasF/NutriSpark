@@ -28,7 +28,7 @@
     ],
     "icons": [
       {
-        "src": "src\\img\\NutriSpark.png",
+        "src": "img\\NutriSpark.png",
         "type": "image/png",
         "sizes": "1000x1000"
       }
